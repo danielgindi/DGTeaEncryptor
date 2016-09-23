@@ -2,10 +2,9 @@
 //  DGTeaEncryptor.m
 //  DGTeaEncryptor
 //
-//  Created by Daniel Cohen Gindi on 4/3/12.
 //  Copyright (c) 2013 Daniel Cohen Gindi. All rights reserved.
 //
-//  https://github.com/danielgindi/DGTeaEncryptor
+//  https://github.com/danielgindi/drunken-danger-zone
 //
 //  The MIT License (MIT)
 //  
@@ -246,7 +245,7 @@
             y = [[v objectAtIndex:(p + 1) % n] unsignedIntValue];
             mx = ((z >> 5) ^ (y << 2)) +
                 ((y >> 3) ^ (z << 4)) ^ (sum ^ y) +
-                ([[k objectAtIndex:(p & 3 ^ e)] unsignedIntValue] ^ z);
+                ([[k objectAtIndex:((p & 3) ^ e)] unsignedIntValue] ^ z);
             
             [v replaceObjectAtIndex:p withObject:[NSNumber numberWithUnsignedInt:[[v objectAtIndex:p] unsignedIntValue] + mx]];
             
@@ -295,7 +294,7 @@
             z = [[v objectAtIndex:p > 0 ? p - 1 : n - 1] intValue];
             mx = ((z >> 5) ^ (y << 2)) +
                 ((y >> 3) ^ (z << 4)) ^ (sum ^ y) +
-                ([[k objectAtIndex:(p & 3 ^ e)] unsignedIntValue] ^ z);
+                ([[k objectAtIndex:((p & 3) ^ e)] unsignedIntValue] ^ z);
             
             [v replaceObjectAtIndex:p withObject:[NSNumber numberWithUnsignedInt:[[v objectAtIndex:p] unsignedIntValue] - mx]];
             
